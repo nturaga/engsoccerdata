@@ -22,37 +22,37 @@ games_between_sum <- function(df = NULL, teamname1 = NULL, teamname2 = NULL, typ
     
     
     tmp <- df %>%
-        dplyr::group_by(home) %>%
-        dplyr::filter(home == teamname1 & visitor == teamname2 | home == teamname2 & visitor == teamname1)
+        group_by(home) %>%
+        filter(home == teamname1 & visitor == teamname2 | home == teamname2 & visitor == teamname1)
     
     tmp1 <- engsoccerdata::homeaway(tmp) %>%
-        dplyr::group_by(team, opp, venue) %>%
-        dplyr::mutate(goaldif = gf - ga,
+        group_by(team, opp, venue) %>%
+        mutate(goaldif = gf - ga,
                       result = ifelse(gf > ga, "H", ifelse(gf <  ga, "A", "D"))) %>%
-        dplyr::summarise(P = nrow(.),
+        summarise(P = nrow(.),
                          GF = sum(gf),
                          GA = sum(ga),
                          GD = sum(goaldif),
                          W = sum(result == "H"),
                          D = sum(result == "D"),
                          L = sum(result == "A")) %>%
-        dplyr::select(team, opp, venue, W, D, L, GF, GA, GD) %>%
+        select(team, opp, venue, W, D, L, GF, GA, GD) %>%
         as.data.frame()
     
     
     tmp2 <- engsoccerdata::homeaway(tmp) %>%
-        dplyr::mutate(venue = "all",
+        mutate(venue = "all",
                       goaldif = gf - ga,
                       result = ifelse(gf > ga, "H", ifelse(gf < ga, "A", "D"))) %>%
-        dplyr::group_by(team, opp, venue) %>%
-        dplyr::summarise(P = nrow(.),
+        group_by(team, opp, venue) %>%
+        summarise(P = nrow(.),
                          GF = sum(gf),
                          GA = sum(ga),
                          GD = sum(goaldif),
                          W = sum(result == "H"), 
                          D = sum(result == "D"),
                          L = sum(result == "A")) %>%
-        dplyr::select(team, opp, venue, W, D, L, GF, GA, GD) %>%
+        select(team, opp, venue, W, D, L, GF, GA, GD) %>%
         as.data.frame()
     
     if (type == "all") {

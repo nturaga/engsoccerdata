@@ -26,20 +26,20 @@ maketable <- function(df = NULL, Season = NULL, tier = NULL, pts = 3) {
     
     temp <- rbind(
         dfx %>%
-        dplyr::select(team = home, opp = visitor, GF = hgoal, GA = vgoal),
+        select(team = home, opp = visitor, GF = hgoal, GA = vgoal),
         dfx %>%
-        dplyr::select(team = visitor, opp = home, GF = vgoal, GA = hgoal)) %>%
-        dplyr::mutate(GD = GF - GA) %>%
-        dplyr::group_by(team) %>%
-        dplyr::summarise(GP = sum(GD <= 100),
+        select(team = visitor, opp = home, GF = vgoal, GA = hgoal)) %>%
+        mutate(GD = GF - GA) %>%
+        group_by(team) %>%
+        summarise(GP = sum(GD <= 100),
                          W = sum(GD > 0),
                          D = sum(GD == 0),
                          L = sum(GD < 0),
                          gf = sum(GF),
                          ga = sum(GA),
                          gd = sum(GD)) %>%
-        dplyr::mutate(Pts = (W * pts) + D) %>%
-        dplyr::arrange(-Pts, -gd, -gf) %>% 
-        dplyr::mutate(Pos = rownames(.)) %>% as.data.frame()
+        mutate(Pts = (W * pts) + D) %>%
+        arrange(-Pts, -gd, -gf) %>% 
+        mutate(Pos = rownames(.)) %>% as.data.frame()
     return(temp)
 }

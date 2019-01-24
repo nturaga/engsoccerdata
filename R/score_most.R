@@ -20,11 +20,11 @@ score_most <- function(df, score) {
     score1 <- paste(temp[2], temp[1], sep = "-")
     
     df %>%
-        dplyr::filter(FT == score | FT == score1) %>%
-        dplyr::select(Season, home, visitor) %>%
+        filter(FT == score | FT == score1) %>%
+        select(Season, home, visitor) %>%
         tidyr::gather(key, team, home:visitor) %>%
-        dplyr::group_by(team) %>% 
-        dplyr::tally() %>%
-        dplyr::arrange(-n) %>%
-        dplyr::filter(n == max(n))
+        group_by(team) %>% 
+        tally() %>%
+        arrange(-n) %>%
+        filter(n == max(n))
 }

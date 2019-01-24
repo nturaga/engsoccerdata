@@ -54,22 +54,22 @@ maketable_all <-
     
     # subset only home or away fixtures, if applicable
     if (match.arg(type) == "home") {
-        temp <- dplyr::select(dfx, team = home, opp = visitor, GF = hgoal, GA = vgoal)
+        temp <- select(dfx, team = home, opp = visitor, GF = hgoal, GA = vgoal)
     } else if (match.arg(type) == "away") {
-        temp <- dplyr::select(dfx, team = visitor, opp = home, GF = vgoal, GA = hgoal)
+        temp <- select(dfx, team = visitor, opp = home, GF = vgoal, GA = hgoal)
     } else if (match.arg(type) == "both") {
-        temp <- rbind(dplyr::select(dfx, team = home, opp = visitor, GF = hgoal, GA = vgoal),
-                      dplyr::select(dfx, team = visitor, opp = home, GF = vgoal, GA = hgoal))
+        temp <- rbind(select(dfx, team = home, opp = visitor, GF = hgoal, GA = vgoal),
+                      select(dfx, team = visitor, opp = home, GF = vgoal, GA = hgoal))
     }
     
     temp <- temp %>%
-        dplyr::mutate(GD = GF - GA) %>%
-        dplyr::group_by(team) %>%
-        dplyr::summarise(GP = sum(GD <= 100), W = sum(GD > 0), D = sum(GD == 0),
+        mutate(GD = GF - GA) %>%
+        group_by(team) %>%
+        summarise(GP = sum(GD <= 100), W = sum(GD > 0), D = sum(GD == 0),
                          L = sum(GD < 0), gf = sum(GF), ga = sum(GA), gd = sum(GD)) %>%
-        dplyr::mutate(Pts = (W * pts) + D) %>%
-        dplyr::arrange(-Pts, -gd, -gf) %>% 
-        dplyr::mutate(Pos = rownames(.)) %>%
+        mutate(Pts = (W * pts) + D) %>%
+        arrange(-Pts, -gd, -gf) %>% 
+        mutate(Pos = rownames(.)) %>%
         as.data.frame()
     
     return(temp)

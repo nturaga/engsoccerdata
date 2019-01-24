@@ -1,9 +1,9 @@
-Title: English and European Soccer Results 1871-2016
+Title: English and European Soccer Results 1871-2018
 Type: Package
-Package: engsoccerdata
-Version: 0.1.6
+Package: SoccerData
+Version: 0.1.7
 Date: 2017-01-22
-Author: James Curley
+Author: James Curley, Nitesh Turaga
 Maintainer: James Curley <jc3181@columbia.edu>
 Description: Analyzing English & European soccer results data from 1871-2016.
 Depends: R (>= 3.5),
@@ -11,6 +11,5 @@ Depends: R (>= 3.5),
 License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
-Suggests:
 RoxygenNote: 6.0.1
 Imports: magrittr, tidyr, utils

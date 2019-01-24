@@ -49,15 +49,7 @@ set_config( config( ssl_verifypeer = 0L ) )
 library(devtools)
 install_github('jalapic/engsoccerdata', username = "jalapic")
 library(engsoccerdata)
-
-
 ```
-
-
-
-
-
-
 
 
 

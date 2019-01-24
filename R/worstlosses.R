@@ -26,22 +26,22 @@ worstlosses <- function(df = NULL, teamname = NULL, type = NULL, N = NULL) {
     if (is.null(type)) {
         
         df %>%
-            dplyr::filter(home == teamname & result == "A" | visitor == teamname & result == "H") %>%
-            dplyr::mutate(maxgoal = pmax(hgoal, vgoal),
+            filter(home == teamname & result == "A" | visitor == teamname & result == "H") %>%
+            mutate(maxgoal = pmax(hgoal, vgoal),
                           mingoal = pmin(hgoal, vgoal),
                           absgoaldif = abs(hgoal - vgoal)) %>%
-            dplyr::arrange(-absgoaldif, -maxgoal) %>%
-            dplyr::select(Season, home, visitor, FT, division) %>%
+            arrange(-absgoaldif, -maxgoal) %>%
+            select(Season, home, visitor, FT, division) %>%
             head(N)
     } else {
         df %>%
-            dplyr::filter(home == teamname & result == "A" | visitor == teamname & result == "H") %>%
-            dplyr::mutate(maxgoal = pmax(hgoal, vgoal),
+            filter(home == teamname & result == "A" | visitor == teamname & result == "H") %>%
+            mutate(maxgoal = pmax(hgoal, vgoal),
                           mingoal = pmin(hgoal, vgoal),
                           absgoaldif = abs(hgoal - vgoal)) %>%
-            dplyr::arrange(-absgoaldif, -maxgoal) %>%
-            dplyr::filter(result == type) %>% 
-            dplyr::select(Season, home, visitor, FT, division) %>%
+            arrange(-absgoaldif, -maxgoal) %>%
+            filter(result == type) %>% 
+            select(Season, home, visitor, FT, division) %>%
             head(N)
     }
 }

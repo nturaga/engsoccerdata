@@ -18,8 +18,8 @@ ngoals <- function(df = NULL, n = NULL, teamname = NULL) {
     goaldif <- FT <- Season <- division <- result <- maxgoal <- mingoal <- absgoaldif <- NULL
     
     tmp <- df %>%
-        dplyr::filter(hgoal >= n & home == teamname | vgoal >= n & visitor == teamname) %>%
-        dplyr::select(Date, Season, home, visitor, FT, division, tier) %>%
-        dplyr::arrange(Season)
+        filter(hgoal >= n & home == teamname | vgoal >= n & visitor == teamname) %>%
+        select(Date, Season, home, visitor, FT, division, tier) %>%
+        arrange(Season)
     return(tmp)
 }

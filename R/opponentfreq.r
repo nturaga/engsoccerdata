@@ -16,17 +16,17 @@ opponentfreq <- function(df = NULL, teamname = NULL) {
     n <- . <- Date <- tier <- home <- team <- visitor <- hgoal <- vgoal <- goaldif <- FT <- Season <- division <- result <- maxgoal <- mingoal <- absgoaldif <- NULL
     
     temp <- df %>%
-        dplyr::filter(home == teamname) %>%
-        dplyr::select(team = visitor)
+        filter(home == teamname) %>%
+        select(team = visitor)
     
     temp1 <- df %>%
-        dplyr::filter(visitor == teamname) %>%
-        dplyr::select(team = home)
+        filter(visitor == teamname) %>%
+        select(team = home)
     
     temp2 <- rbind(temp, temp1) %>%
-        dplyr::group_by(team) %>%
-        dplyr::tally() %>%
-        dplyr::arrange(-n)
+        group_by(team) %>%
+        tally() %>%
+        arrange(-n)
     
     return(as.data.frame(unclass(temp2)))
     

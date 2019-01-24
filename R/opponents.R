@@ -19,22 +19,22 @@ opponents<-function(df=NULL,Tier=NULL){
     if(is.null(Tier))
         
         rbind(df %>%
-              dplyr::select(team1=home,team2=visitor),
+              select(team1=home,team2=visitor),
               df %>%
-              dplyr::select(team1=visitor,team2=home)) %>%
-            dplyr::group_by(team1) %>%
-            dplyr::summarise(Opponents=dplyr::n_distinct(team2)) %>%
-            dplyr::arrange(-Opponents)
+              select(team1=visitor,team2=home)) %>%
+            group_by(team1) %>%
+            summarise(Opponents=n_distinct(team2)) %>%
+            arrange(-Opponents)
 
 
     else {
         rbind (df %>%
-               dplyr::select(team1=home,team2=visitor,tier),
+               select(team1=home,team2=visitor,tier),
                df %>%
-               dplyr::select(team1=visitor,team2=home,tier)) %>%
-            dplyr::filter(tier==Tier) %>%
-            dplyr::group_by(team1) %>%
-            dplyr::summarise(Opponents=dplyr::n_distinct(team2)) %>%
-            dplyr::arrange(-Opponents)
+               select(team1=visitor,team2=home,tier)) %>%
+            filter(tier==Tier) %>%
+            group_by(team1) %>%
+            summarise(Opponents=n_distinct(team2)) %>%
+            arrange(-Opponents)
     }
 }

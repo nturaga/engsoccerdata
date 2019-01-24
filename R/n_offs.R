@@ -33,32 +33,32 @@ n_offs <- function(df = NULL, N = NULL, Tier = NULL) {
     
     if (is.null(Tier)) 
         df %>%
-            dplyr::mutate(goaldif = hgoal - vgoal,
+            mutate(goaldif = hgoal - vgoal,
                           result = ifelse(hgoal > vgoal,
                                           "H", ifelse(hgoal < vgoal, "A", "D"))) %>%
-            dplyr::group_by(FT) %>% 
-            dplyr::tally() %>%
-            dplyr::filter(n == N) %>%
-            dplyr::select(FT) %>%
-            dplyr::left_join(df) %>%
-            dplyr::select(Date, Season, home, visitor, 
+            group_by(FT) %>% 
+            tally() %>%
+            filter(n == N) %>%
+            select(FT) %>%
+            left_join(df) %>%
+            select(Date, Season, home, visitor, 
                           FT, division, tier, result) %>%
-            dplyr::arrange(FT, Season)
+            arrange(FT, Season)
     else {
         dfTier <- df %>%
-            dplyr::mutate(goaldif = hgoal - vgoal,
+            mutate(goaldif = hgoal - vgoal,
                           result = ifelse(hgoal > vgoal,
                                           "H", ifelse(hgoal < vgoal, "A", "D"))) %>%
-            dplyr::filter(tier == Tier)
+            filter(tier == Tier)
         
         dfTier %>%
-            dplyr::group_by(FT) %>%
-            dplyr::tally() %>%
-            dplyr::filter(n == N) %>%
-            dplyr::select(FT) %>%
-            dplyr::left_join(dfTier) %>%
-            dplyr::select(Date, Season, home,
+            group_by(FT) %>%
+            tally() %>%
+            filter(n == N) %>%
+            select(FT) %>%
+            left_join(dfTier) %>%
+            select(Date, Season, home,
                           visitor, FT, division, tier, result) %>%
-            dplyr::arrange(FT, Season)
+            arrange(FT, Season)
     }
 }

@@ -48,8 +48,8 @@ maketable_eng <- function(df = NULL, Season = NULL, tier = NULL, division = NULL
                 
                 ## rearrange by same rules as before...
                 xx <- xx %>%
-                    dplyr::arrange(-Pts, -gd, -gf) %>%
-                    dplyr::mutate(Pos = rownames(.)) %>%
+                    arrange(-Pts, -gd, -gf) %>%
+                    mutate(Pos = rownames(.)) %>%
                     as.data.frame()
             }
         }
@@ -62,9 +62,9 @@ maketable_eng <- function(df = NULL, Season = NULL, tier = NULL, division = NULL
     else if (Season <= 1974) {
         xx <- maketable(df, Season, tier, pts = 2)
         xx <- xx %>%
-            dplyr::mutate(gd = gf/ga) %>%
-            dplyr::arrange(-Pts, -gd, -gf) %>%
-            dplyr::mutate(Pos = 1:nrow(xx))
+            mutate(gd = gf/ga) %>%
+            arrange(-Pts, -gd, -gf) %>%
+            mutate(Pos = 1:nrow(xx))
         
         if (any(xx$team %in% deductions$team & Season %in% deductions$Season) == T && penalties == T) {
             penalty <- deductions[deductions$team %in% xx$team & deductions$Season %in% Season, ]
@@ -76,17 +76,17 @@ maketable_eng <- function(df = NULL, Season = NULL, tier = NULL, division = NULL
                 
                 ## rearrange by same rules as before...
                 xx <- xx %>%
-                    dplyr::arrange(-Pts, -gd, -gf) %>%
-                    dplyr::mutate(Pos = 1:nrow(xx)) %>%
+                    arrange(-Pts, -gd, -gf) %>%
+                    mutate(Pos = 1:nrow(xx)) %>%
                     as.data.frame()
             }
         }
     } else if (Season == 1975 & tier > 1) {
         xx <- maketable(df, Season, tier, pts = 2)
         xx <- xx %>%
-            dplyr::mutate(gd = gf/ga) %>%
-            dplyr::arrange(-Pts, -gd, -gf) %>%
-            dplyr::mutate(Pos = 1:nrow(xx))
+            mutate(gd = gf/ga) %>%
+            arrange(-Pts, -gd, -gf) %>%
+            mutate(Pos = 1:nrow(xx))
     } else if (Season == 1975 & tier == 1) {
         xx <- maketable(df, Season, tier, pts = 2)
     }
