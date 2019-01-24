@@ -16,36 +16,28 @@
 #' bestwins(england,"Port Vale", N=20)
 #'
 #' @export
-
-
 bestwins<-function(df=NULL, teamname=NULL, type=NULL, N=NULL){
 
-  home<-visitor<-hgoal<-vgoal<-goaldif<-FT<-Season<-division<-result<-maxgoal<-mingoal<-absgoaldif<-NULL
-
-  N<- if(is.null(N))  10 else {N}
-
-
-  if(is.null(type))
-
-    df %>%
-    dplyr::filter(home==teamname & result=="H" | visitor==teamname & result=="A") %>%
-    dplyr::mutate(maxgoal=pmax(hgoal, vgoal), mingoal=pmin(hgoal,vgoal), absgoaldif=abs(hgoal-vgoal)) %>%
-    dplyr::arrange(-absgoaldif,-maxgoal) %>%
-    dplyr::select(Season, home, visitor, FT, division) %>%
-    head(N)
-
-  else
-
-  {
-
-    df %>%
-      dplyr::filter(home==teamname & result=="H" | visitor==teamname & result=="A") %>%
-      dplyr::mutate(maxgoal=pmax(hgoal, vgoal), mingoal=pmin(hgoal,vgoal), absgoaldif=abs(hgoal-vgoal)) %>%
-      dplyr::arrange(-absgoaldif,-maxgoal) %>%
-      dplyr::filter(result==type) %>%
-      dplyr::select(Season, home, visitor, FT, division) %>%
-      head(N)
-
-
-  }
+    home <- visitor <- hgoal <- vgoal <- goaldif <- FT <- Season <- NULL
+    
+    division <- result <- maxgoal <- mingoal <- absgoaldif <- NULL
+    
+    N <- ifelse(is.null(N), 10, N)
+    
+    if(is.null(type)) {    
+        df %>%
+            filter(home==teamname & result=="H" | visitor==teamname & result=="A") %>%
+            mutate(maxgoal=pmax(hgoal, vgoal), mingoal=pmin(hgoal,vgoal), absgoaldif=abs(hgoal-vgoal)) %>%
+            arrange(-absgoaldif,-maxgoal) %>%
+            select(Season, home, visitor, FT, division) %>%
+            head(N)
+    } else {
+        df %>%
+            filter(home==teamname & result=="H" | visitor==teamname & result=="A") %>%
+            mutate(maxgoal=pmax(hgoal, vgoal), mingoal=pmin(hgoal,vgoal), absgoaldif=abs(hgoal-vgoal)) %>%
+            arrange(-absgoaldif,-maxgoal) %>%
+            filter(result==type) %>%
+            select(Season, home, visitor, FT, division) %>%
+            head(N)
+    }
 }

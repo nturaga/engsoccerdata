@@ -9,7 +9,7 @@
 #' @param N The Number of instances
 #' @param Tier Tier
 #' @return a dataframe with summary of results.
-#' @importFrom magrittr "%>%"
+#' @importFrom magrittr '%>%'
 #' @examples
 #' n_offs(england, 1) #return results that have occurred only once across all four tiers
 #' n_offs(england, 2) #return results that have occurred only twice across all four tiers
@@ -24,37 +24,41 @@
 
 
 
-n_offs<- function(df=NULL, N=NULL, Tier=NULL){
-
-  n<-.<-Date<-tier<-home<-visitor<-hgoal<-vgoal<-goaldif<-FT<-Season<-division<-result<-maxgoal<-mingoal<-absgoaldif<-NULL
-
-
-  if(is.null(Tier))
-    df %>%
-    dplyr::mutate(goaldif  = hgoal-vgoal,
-                  result = ifelse(hgoal>vgoal, "H", ifelse(hgoal<vgoal, "A", "D"))) %>%
-    dplyr::group_by(FT)%>%
-    dplyr::tally() %>%
-    dplyr::filter(n==N) %>%
-    dplyr::select(FT) %>%
-    dplyr::left_join(df) %>%
-    dplyr::select(Date, Season, home, visitor, FT, division, tier, result)%>%
-    dplyr::arrange(FT, Season)
-
-  else
-
-    { dfTier<-df %>%
-      dplyr::mutate(goaldif  = hgoal-vgoal,
-                    result = ifelse(hgoal>vgoal, "H", ifelse(hgoal<vgoal, "A", "D"))) %>%
-      dplyr::filter(tier==Tier)
-
-    dfTier %>%
-      dplyr::group_by(FT)%>%
-      dplyr::tally() %>%
-      dplyr::filter(n==N) %>%
-      dplyr::select(FT) %>%
-      dplyr::left_join(dfTier) %>%
-      dplyr::select(Date, Season, home, visitor, FT, division, tier, result)%>%
-      dplyr::arrange(FT, Season)
+n_offs <- function(df = NULL, N = NULL, Tier = NULL) {
+    
+    n <- . <- Date <- tier <- home <- visitor <- hgoal <- NULL
+    vgoal <- goaldif <- FT <- Season <- division <- result <- NULL
+    maxgoal <- mingoal <- absgoaldif <- NULL
+    
+    
+    if (is.null(Tier)) 
+        df %>%
+            dplyr::mutate(goaldif = hgoal - vgoal,
+                          result = ifelse(hgoal > vgoal,
+                                          "H", ifelse(hgoal < vgoal, "A", "D"))) %>%
+            dplyr::group_by(FT) %>% 
+            dplyr::tally() %>%
+            dplyr::filter(n == N) %>%
+            dplyr::select(FT) %>%
+            dplyr::left_join(df) %>%
+            dplyr::select(Date, Season, home, visitor, 
+                          FT, division, tier, result) %>%
+            dplyr::arrange(FT, Season)
+    else {
+        dfTier <- df %>%
+            dplyr::mutate(goaldif = hgoal - vgoal,
+                          result = ifelse(hgoal > vgoal,
+                                          "H", ifelse(hgoal < vgoal, "A", "D"))) %>%
+            dplyr::filter(tier == Tier)
+        
+        dfTier %>%
+            dplyr::group_by(FT) %>%
+            dplyr::tally() %>%
+            dplyr::filter(n == N) %>%
+            dplyr::select(FT) %>%
+            dplyr::left_join(dfTier) %>%
+            dplyr::select(Date, Season, home,
+                          visitor, FT, division, tier, result) %>%
+            dplyr::arrange(FT, Season)
     }
 }

@@ -12,39 +12,34 @@
 #' It also does not evaluate points deducted from teams or if games were  artificially
 #' awarded to one side based on games not being played.
 #' @return a dataframe with a league table
-#' @importFrom magrittr "%>%"
+#' @importFrom magrittr '%>%'
 #' @examples
 #' maketable(df=england,Season=2013,tier=1,pts=3)
 #' @export
-
-
-maketable <- function(df=NULL, Season=NULL, tier=NULL, pts=3){
-
-  GA<-GF<-ga<-gf<-gd<-GD<-D<-L<-W<-Pts<-.<-Date<-home<-team<-visitor<-hgoal<-opp<-vgoal<-goaldif <-FT<-division<-result<-maxgoal<-mingoal<-absgoaldif<-NULL
-
-  dfx <- df[(df$Season==Season & df$tier==tier),]
-
-
-  temp <-rbind(
-      dfx %>%
-        dplyr::select(team=home, opp=visitor, GF=hgoal, GA=vgoal),
-      dfx %>%
-        dplyr::select(team=visitor, opp=home, GF=vgoal, GA=hgoal)
-    ) %>%
-    dplyr::mutate(GD = GF-GA) %>%
-    dplyr::group_by(team) %>%
-    dplyr::summarise(GP = sum(GD<=100),
-              W = sum(GD>0),
-              D = sum(GD==0),
-              L = sum(GD<0),
-              gf = sum(GF),
-              ga = sum(GA),
-              gd = sum(GD)
-    ) %>%
-    dplyr::mutate(Pts = (W*pts) + D) %>%
-    dplyr::arrange(-Pts, -gd, -gf) %>%
-    dplyr::mutate(Pos = rownames(.)) %>%
-    as.data.frame()
-
-  return(temp)
+maketable <- function(df = NULL, Season = NULL, tier = NULL, pts = 3) {
+    
+    GA <- GF <- ga <- gf <- gd <- GD <- D <- L <- W <- Pts  <- NULL
+    . <- Date <- home <- team <- visitor <- hgoal <- opp  <- NULL
+    vgoal <- goaldif <- FT <- division <- result <- maxgoal <- mingoal <- absgoaldif <- NULL
+    
+    dfx <- df[(df$Season == Season & df$tier == tier), ]
+    
+    temp <- rbind(
+        dfx %>%
+        dplyr::select(team = home, opp = visitor, GF = hgoal, GA = vgoal),
+        dfx %>%
+        dplyr::select(team = visitor, opp = home, GF = vgoal, GA = hgoal)) %>%
+        dplyr::mutate(GD = GF - GA) %>%
+        dplyr::group_by(team) %>%
+        dplyr::summarise(GP = sum(GD <= 100),
+                         W = sum(GD > 0),
+                         D = sum(GD == 0),
+                         L = sum(GD < 0),
+                         gf = sum(GF),
+                         ga = sum(GA),
+                         gd = sum(GD)) %>%
+        dplyr::mutate(Pts = (W * pts) + D) %>%
+        dplyr::arrange(-Pts, -gd, -gf) %>% 
+        dplyr::mutate(Pos = rownames(.)) %>% as.data.frame()
+    return(temp)
 }
