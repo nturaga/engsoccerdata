@@ -25,7 +25,7 @@ a dataframe with summary of results. Will be
 Function to List the summary stats of all games ever between two teams
 }
 \examples{
-    games_between_sum(england, "Exeter City", "York City")
-    games_between_sum(england, "Aston Villa", "York City", "homeaway")
-    games_between_sum(england, "Manchester United", "Liverpool", "all")
+    games_between_sum(england, 'Exeter City', 'York City')
+    games_between_sum(england, 'Aston Villa', 'York City', 'homeaway')
+    games_between_sum(england, 'Manchester United', 'Liverpool', 'all')
 }

@@ -4,8 +4,8 @@
 \alias{maketable_eng}
 \title{Make an English league table}
 \usage{
-maketable_eng(df = NULL, Season = NULL, tier = NULL, division = NULL,
-  penalties = FALSE)
+maketable_eng(df = NULL, Season = NULL, tier = NULL,
+  division = NULL, penalties = FALSE)
 }
 \arguments{
 \item{df}{The results dataframe}
@@ -32,7 +32,7 @@ that were in place for each league in each year
 
 \examples{
 maketable_eng(df=england,Season=1920,tier=1)
-maketable_eng(df=england,Season=1947,division="3a",tier=3)
+maketable_eng(df=england,Season=1947,division='3a',tier=3)
 maketable_eng(df=england,Season=1975,tier=1)
 maketable_eng(df=england,Season=1975,tier=2)
 maketable_eng(df=england,Season=2007,tier=3, penalties=TRUE)

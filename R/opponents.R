@@ -18,7 +18,7 @@ opponents<-function(df=NULL,Tier=NULL){
     
     if(is.null(Tier))
         
-        rbind(df %>%
+        bind_rows(df %>%
               select(team1=home,team2=visitor),
               df %>%
               select(team1=visitor,team2=home)) %>%
@@ -28,7 +28,7 @@ opponents<-function(df=NULL,Tier=NULL){
 
 
     else {
-        rbind (df %>%
+        bind_rows (df %>%
                select(team1=home,team2=visitor,tier),
                df %>%
                select(team1=visitor,team2=home,tier)) %>%

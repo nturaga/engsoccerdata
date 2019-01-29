@@ -25,7 +25,7 @@ maketable_eng <- function(df = NULL, Season = NULL, tier = NULL, division = NULL
     W <- Pts <- . <- Date <- home <- team <- visitor <- hgoal <- NULL
     opp <- vgoal <- goaldif <- FT <- result <- maxgoal <- mingoal <- absgoaldif <- NULL
     
-    deductions <- engsoccerdata::deductions
+    deductions <- deductions
     
     if (!is.null(division)) {
         df <- df[df$division == division, ]

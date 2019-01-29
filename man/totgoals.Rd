@@ -20,7 +20,7 @@ a dataframe with  matches
 Return all instances of a team being involved in a game with n goals
 }
 \examples{
-totgoals(england, 10, "York City")
-totgoals(england, 12, "Aston Villa")
+totgoals(england, 10, 'York City')
+totgoals(england, 12, 'Aston Villa')
 
 }

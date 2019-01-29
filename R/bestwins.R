@@ -8,7 +8,6 @@
 #' @param N The total number of games to return
 #' @return a dataframe of games ending in best wins
 #' @importFrom magrittr "%>%"
-#' @importFrom utils "head"
 #' @examples
 #' bestwins(england,"Everton")
 #' bestwins(england,"Aston Villa", type="H")
@@ -19,12 +18,12 @@
 bestwins<-function(df=NULL, teamname=NULL, type=NULL, N=NULL){
 
     home <- visitor <- hgoal <- vgoal <- goaldif <- FT <- Season <- NULL
-    
+
     division <- result <- maxgoal <- mingoal <- absgoaldif <- NULL
-    
+
     N <- ifelse(is.null(N), 10, N)
-    
-    if(is.null(type)) {    
+
+    if(is.null(type)) {
         df %>%
             filter(home==teamname & result=="H" | visitor==teamname & result=="A") %>%
             mutate(maxgoal=pmax(hgoal, vgoal), mingoal=pmin(hgoal,vgoal), absgoaldif=abs(hgoal-vgoal)) %>%

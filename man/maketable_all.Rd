@@ -37,8 +37,8 @@ The table that is produced is based upon 3 points for a win (unless otherwise
 }
 
 \examples{
-maketable_all(df=england[england$tier==1,],begin="1992-08-15",
-     end="2017-07-01") #EPL historical table
-maketable_all(df=england[england$tier==1,],begin="1992-08-15",
-     end="2017-07-01", type="away") #EPL historical table away results
+maketable_all(df=england[england$tier==1,],begin='1992-08-15',
+     end='2017-07-01') #EPL historical table
+maketable_all(df=england[england$tier==1,],begin='1992-08-15',
+     end='2017-07-01', type='away') #EPL historical table away results
 }

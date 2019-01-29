@@ -24,10 +24,10 @@ a dataframe of games ending in worst losses
 Return each team's worst losses
 }
 \examples{
-worstlosses(england,"Everton")
-worstlosses(england,"Aston Villa", type="H")
-worstlosses(england,"York City", type="A")
-worstlosses(england,"Port Vale", N=20)
-worstlosses(england,"Hull City", type="A", N=7)
+worstlosses(england,'Everton')
+worstlosses(england,'Aston Villa', type='H')
+worstlosses(england,'York City', type='A')
+worstlosses(england,'Port Vale', N=20)
+worstlosses(england,'Hull City', type='A', N=7)
 
 }

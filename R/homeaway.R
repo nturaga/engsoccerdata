@@ -13,7 +13,7 @@ homeaway <- function(df) {
     tier <- venue <- home <- visitor <- hgoal <- vgoal <- NULL
     
     if ("division" %in% colnames(df)) {
-        rbind(
+        bind_rows(
             df %>%
                 select(Date, Season, team = home,
                           opp = visitor, gf = hgoal,
@@ -26,7 +26,7 @@ homeaway <- function(df) {
                 mutate(venue = "away")) %>%
             arrange(team, Date)
     } else if ("tier" %in% colnames(df)) {
-        rbind(
+        bind_rows(
             df %>%
             select(Date, Season, team = home,
                           opp = visitor, gf = hgoal,
@@ -39,7 +39,7 @@ homeaway <- function(df) {
             mutate(venue = "away")) %>%
             arrange(team, Date)
     } else {
-        rbind(
+        bind_rows(
             df %>%
             select(Date, Season, team = home, opp = visitor,
                           gf = hgoal, ga = vgoal, teamconf = hconf,

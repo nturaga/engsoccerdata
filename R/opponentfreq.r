@@ -23,7 +23,7 @@ opponentfreq <- function(df = NULL, teamname = NULL) {
         filter(visitor == teamname) %>%
         select(team = home)
     
-    temp2 <- rbind(temp, temp1) %>%
+    temp2 <- bind_rows(temp, temp1) %>%
         group_by(team) %>%
         tally() %>%
         arrange(-n)

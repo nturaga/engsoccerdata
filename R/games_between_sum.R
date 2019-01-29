@@ -25,7 +25,7 @@ games_between_sum <- function(df = NULL, teamname1 = NULL, teamname2 = NULL, typ
         group_by(home) %>%
         filter(home == teamname1 & visitor == teamname2 | home == teamname2 & visitor == teamname1)
     
-    tmp1 <- engsoccerdata::homeaway(tmp) %>%
+    tmp1 <- homeaway(tmp) %>%
         group_by(team, opp, venue) %>%
         mutate(goaldif = gf - ga,
                       result = ifelse(gf > ga, "H", ifelse(gf <  ga, "A", "D"))) %>%
@@ -40,7 +40,7 @@ games_between_sum <- function(df = NULL, teamname1 = NULL, teamname2 = NULL, typ
         as.data.frame()
     
     
-    tmp2 <- engsoccerdata::homeaway(tmp) %>%
+    tmp2 <- homeaway(tmp) %>%
         mutate(venue = "all",
                       goaldif = gf - ga,
                       result = ifelse(gf > ga, "H", ifelse(gf < ga, "A", "D"))) %>%

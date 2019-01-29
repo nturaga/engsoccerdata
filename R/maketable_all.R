@@ -58,7 +58,7 @@ maketable_all <-
     } else if (match.arg(type) == "away") {
         temp <- select(dfx, team = visitor, opp = home, GF = vgoal, GA = hgoal)
     } else if (match.arg(type) == "both") {
-        temp <- rbind(select(dfx, team = home, opp = visitor, GF = hgoal, GA = vgoal),
+        temp <- bind_rows(select(dfx, team = home, opp = visitor, GF = hgoal, GA = vgoal),
                       select(dfx, team = visitor, opp = home, GF = vgoal, GA = hgoal))
     }
     

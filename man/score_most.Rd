@@ -18,7 +18,7 @@ a dataframe with frequency of matches and team.
 Team who has been involved in the most games of each scoreline
 }
 \examples{
-score_most(england, "6-6")
-score_most(england, "8-0")
-score_most(england, "9-1")
+score_most(england, '6-6')
+score_most(england, '8-0')
+score_most(england, '9-1')
 }

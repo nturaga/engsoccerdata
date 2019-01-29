@@ -34,7 +34,7 @@ alltimerecord <- function(df = NULL, teamname = NULL) {
                   D = sum(result == "D"), L = sum(result == "H"),
                   GF = sum(vgoal), GA = sum(hgoal), GD = GF - GA)
     
-    temp <- rbind(hrec, vrec, hrec + vrec)
+    temp <- bind_rows(hrec, vrec, hrec + vrec)
     rownames(temp) <- c("home", "away", "total")
     return(temp)
 }

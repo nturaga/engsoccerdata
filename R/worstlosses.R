@@ -8,7 +8,6 @@
 #' @param N The total number of games to return
 #' @return a dataframe of games ending in worst losses
 #' @importFrom magrittr '%>%'
-#' @importFrom utils 'head'
 #' @examples
 #' worstlosses(england,'Everton')
 #' worstlosses(england,'Aston Villa', type='H')
@@ -18,13 +17,13 @@
 #'
 #' @export
 worstlosses <- function(df = NULL, teamname = NULL, type = NULL, N = NULL) {
-    
+
     home <- visitor <- hgoal <- vgoal <- goaldif <- FT <- Season <- division <- result <- maxgoal <- mingoal <- absgoaldif <- NULL
-    
+
     N <- ifelse(test = is.null(N), yes = 10, no = N)
-    
+
     if (is.null(type)) {
-        
+
         df %>%
             filter(home == teamname & result == "A" | visitor == teamname & result == "H") %>%
             mutate(maxgoal = pmax(hgoal, vgoal),
@@ -40,7 +39,7 @@ worstlosses <- function(df = NULL, teamname = NULL, type = NULL, N = NULL) {
                           mingoal = pmin(hgoal, vgoal),
                           absgoaldif = abs(hgoal - vgoal)) %>%
             arrange(-absgoaldif, -maxgoal) %>%
-            filter(result == type) %>% 
+            filter(result == type) %>%
             select(Season, home, visitor, FT, division) %>%
             head(N)
     }

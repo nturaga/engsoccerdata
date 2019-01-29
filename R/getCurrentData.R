@@ -4,14 +4,13 @@
 #' @param division division to add
 #' @param tier tier to add
 #' @param Season Season to get current data for
-#' @return a dataframe with results for current season
-#' @importFrom utils 'read.csv'
+#' @return a tibble with results for current season
 #' @export
 getCurrentData <- function(df, division, tier, Season) {
-    data.frame(Date = as.character(as.Date(df$Date, "%d/%m/%y")),
+    tibble(Date = as.character(as.Date(df$Date, "%d/%m/%y")),
                Season = Season,
                home = as.character(df$HomeTeam),
-               visitor = as.character(df$AwayTeam), 
+               visitor = as.character(df$AwayTeam),
                FT = paste0(df$FTHG, "-", df$FTAG),
                hgoal = df$FTHG,
                vgoal = df$FTAG,

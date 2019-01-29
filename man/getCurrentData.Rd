@@ -16,7 +16,7 @@ getCurrentData(df, division, tier, Season)
 \item{Season}{Season to get current data for}
 }
 \value{
-a dataframe with results for current season
+a tibble with results for current season
 }
 \description{
 Get current season data

@@ -18,7 +18,8 @@ a dataframe of all-time records
 Get a team's all-time record
 }
 \examples{
-alltimerecord(england, "Aston Villa")
-alltimerecord(england, "York City")
-alltimerecord(england, "Rochdale")
+alltimerecord(england, 'Aston Villa')
+alltimerecord(england, 'York City')
+alltimerecord(england, 'Rochdale')
+
 }

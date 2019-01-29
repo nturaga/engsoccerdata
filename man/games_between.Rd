@@ -21,7 +21,7 @@ they have never played will return an empty dataframe.
 Function to List all games ever between two teams
 }
 \examples{
-games_between(england, "Aston Villa", "York City")
-games_between(england, "Carlisle United", "Chelsea")
+games_between(england, 'Aston Villa', 'York City')
+games_between(england, 'Carlisle United', 'Chelsea')
 
 }

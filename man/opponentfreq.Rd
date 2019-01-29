@@ -18,7 +18,7 @@ a dataframe with frequency of matches and team.
 The number of times a team has played against each opponent
 }
 \examples{
-opponentfreq(england, "Aston Villa")
-opponentfreq(england, "York City")
-opponentfreq(england, "Milton Keynes Dons")
+opponentfreq(england, 'Aston Villa')
+opponentfreq(england, 'York City')
+opponentfreq(england, 'Milton Keynes Dons')
 }

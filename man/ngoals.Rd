@@ -20,8 +20,8 @@ a dataframe with summary of results.
 Return all instances of a team scoring n goals
 }
 \examples{
-ngoals(england, 7, "York City")
-ngoals(england, 8, "Manchester United")
-ngoals(england, 9, "Aston Villa")
+ngoals(england, 7, 'York City')
+ngoals(england, 8, 'Manchester United')
+ngoals(england, 9, 'Aston Villa')
 
 }

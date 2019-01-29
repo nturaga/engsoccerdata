@@ -24,7 +24,7 @@ maketable <- function(df = NULL, Season = NULL, tier = NULL, pts = 3) {
     
     dfx <- df[(df$Season == Season & df$tier == tier), ]
     
-    temp <- rbind(
+    temp <- bind_rows(
         dfx %>%
         select(team = home, opp = visitor, GF = hgoal, GA = vgoal),
         dfx %>%
