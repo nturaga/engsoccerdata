@@ -21,15 +21,7 @@
 #' n_offs(england, 5, 3) #return which results have occurred five times in the 3rd tier
 #'
 #' @export
-
-
-
 n_offs <- function(df = NULL, N = NULL, Tier = NULL) {
-    
-    n <- . <- Date <- tier <- home <- visitor <- hgoal <- NULL
-    vgoal <- goaldif <- FT <- Season <- division <- result <- NULL
-    maxgoal <- mingoal <- absgoaldif <- NULL
-    
     
     if (is.null(Tier)) 
         df %>%

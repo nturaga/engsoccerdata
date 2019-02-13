@@ -16,14 +16,13 @@
 #' worstlosses(england,'Hull City', type='A', N=7)
 #'
 #' @export
-worstlosses <- function(df = NULL, teamname = NULL, type = NULL, N = NULL) {
-
-    home <- visitor <- hgoal <- vgoal <- goaldif <- FT <- Season <- division <- result <- maxgoal <- mingoal <- absgoaldif <- NULL
-
+worstlosses <-
+    function(df = NULL, teamname = NULL, type = NULL, N = NULL)
+{
     N <- ifelse(test = is.null(N), yes = 10, no = N)
-
+    
     if (is.null(type)) {
-
+        
         df %>%
             filter(home == teamname & result == "A" | visitor == teamname & result == "H") %>%
             mutate(maxgoal = pmax(hgoal, vgoal),

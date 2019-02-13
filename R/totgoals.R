@@ -10,11 +10,7 @@
 #' totgoals(england, 12, 'Aston Villa')
 #'
 #' @export
-
 totgoals <- function(df = NULL, N = NULL, teamname = NULL) {
-    
-    totgoal <- score1 <- n <- . <- key <- Date <- tier <- home <- team <- visitor <- hgoal <- vgoal <- goaldif <- FT <- Season <- division <- result <- maxgoal <- mingoal <- absgoaldif <- NULL
-    
     df %>%
         mutate(totgoal = hgoal + vgoal) %>%
         filter(totgoal >= N, home == teamname | visitor == teamname) %>%

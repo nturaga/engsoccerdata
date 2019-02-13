@@ -18,10 +18,6 @@
 #' @export
 maketable <- function(df = NULL, Season = NULL, tier = NULL, pts = 3) {
     
-    GA <- GF <- ga <- gf <- gd <- GD <- D <- L <- W <- Pts  <- NULL
-    . <- Date <- home <- team <- visitor <- hgoal <- opp  <- NULL
-    vgoal <- goaldif <- FT <- division <- result <- maxgoal <- mingoal <- absgoaldif <- NULL
-    
     dfx <- df[(df$Season == Season & df$tier == tier), ]
     
     temp <- bind_rows(

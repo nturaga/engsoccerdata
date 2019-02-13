@@ -1,17 +1,20 @@
 #' Get current Belgium season data for top tier
 #'
+#' @param Season the current Season
+#'
 #' @return a dataframe with results for current
 #' season for top division
 #'
-#' @param Season the current Season
 #' @examples
 #' belgium_current()
+#'
+#' @importFrom dplyr
+#' @importFrom readr read_csv
+#' @importFrom stringr
+#'
 #' @export
-
-
 belgium_current <- function(Season = 2017) {
 
-    s1 <- s2 <- myseason <- b1 <- df1 <- NULL
     myseason <- Season
     s2 <- as.numeric(str_sub(myseason, 3, 4))
     s1 <- s2 + 1

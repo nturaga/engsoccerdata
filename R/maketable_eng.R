@@ -21,10 +21,6 @@
 
 maketable_eng <- function(df = NULL, Season = NULL, tier = NULL, division = NULL, penalties = FALSE) {
     
-    newPts <- penalty <- GA <- GF <- ga <- gf <- gd <- GD <- NULL
-    W <- Pts <- . <- Date <- home <- team <- visitor <- hgoal <- NULL
-    opp <- vgoal <- goaldif <- FT <- result <- maxgoal <- mingoal <- absgoaldif <- NULL
-    
     deductions <- deductions
     
     if (!is.null(division)) {

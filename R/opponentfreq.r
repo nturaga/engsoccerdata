@@ -9,12 +9,7 @@
 #' opponentfreq(england, 'York City')
 #' opponentfreq(england, 'Milton Keynes Dons')
 #' @export
-
-
 opponentfreq <- function(df = NULL, teamname = NULL) {
-    
-    n <- . <- Date <- tier <- home <- team <- visitor <- hgoal <- vgoal <- goaldif <- FT <- Season <- division <- result <- maxgoal <- mingoal <- absgoaldif <- NULL
-    
     temp <- df %>%
         filter(home == teamname) %>%
         select(team = visitor)

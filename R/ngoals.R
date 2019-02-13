@@ -11,12 +11,8 @@
 #' ngoals(england, 9, 'Aston Villa')
 #'
 #' @export
-
 ngoals <- function(df = NULL, n = NULL, teamname = NULL) {
-    
-    . <- Date <- tier <- home <- visitor <- hgoal <- vgoal <- NULL
-    goaldif <- FT <- Season <- division <- result <- maxgoal <- mingoal <- absgoaldif <- NULL
-    
+        
     tmp <- df %>%
         filter(hgoal >= n & home == teamname | vgoal >= n & visitor == teamname) %>%
         select(Date, Season, home, visitor, FT, division, tier) %>%

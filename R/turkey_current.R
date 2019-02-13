@@ -6,10 +6,7 @@
 #' @examples
 #' turkey_current()
 #' @export
-
 turkey_current <- function(Season = 2017) {
-
-    s1 <- s2 <- myseason <- t1 <- df1 <- NULL
     myseason <- Season
     s2 <- as.numeric(str_sub(myseason, 3, 4))
     s1 <- s2 + 1

@@ -26,11 +26,6 @@ maketable_all <-
              type = c("both", "home", "away"))
 {
     
-    GA <- GF <- ga <- gf <- gd <- GD <- D <- L <- NULL
-    W <- Pts <- . <- Date <- home <- team <- visitor <- NULL
-    hgoal <- opp <- vgoal <- goaldif <- FT <- division <- NULL
-    result <- maxgoal <- mingoal <- absgoaldif <- NULL
-    
     ## season/tier
     if (!is.null(Season) & is.null(tier)) {
         dfx <- df[(df$Season == Season), ]

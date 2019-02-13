@@ -8,10 +8,6 @@
 #'
 #' @export
 homeaway <- function(df) {
-    hconf <- vconf <- leg <- hgoalaet <- vgoalaet <- hpen <- NULL
-    vpen <- ga <- Date <- Season <- team <- opp <- gf <- division <- NULL
-    tier <- venue <- home <- visitor <- hgoal <- vgoal <- NULL
-    
     if ("division" %in% colnames(df)) {
         bind_rows(
             df %>%

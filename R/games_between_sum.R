@@ -15,12 +15,6 @@
 #' @export
 games_between_sum <- function(df = NULL, teamname1 = NULL, teamname2 = NULL, type = "all") {
     
-    . <- D <- GA <- GD <- GF <- L <- W <- ga <- gf  <- NULL
-    opp <- team <- venue <- tmp1 <- tmp2 <- tmp <- NULL
-    home <- visitor <- hgoal <- vgoal <- goaldif <- NULL
-    FT <- Season <- division <- result <- maxgoal <- mingoal <- absgoaldif <- NULL
-    
-    
     tmp <- df %>%
         group_by(home) %>%
         filter(home == teamname1 & visitor == teamname2 | home == teamname2 & visitor == teamname1)

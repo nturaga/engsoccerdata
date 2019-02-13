@@ -10,12 +10,6 @@
 #'
 #' @export
 opponents<-function(df=NULL,Tier=NULL){
-
-    Opponents<-team1<-team2<- n<-.<-Date<-tier<-home<-NULL
-    team<-visitor<-hgoal<-vgoal<-goaldif<-FT<-Season<-NULL
-    division<-result<-maxgoal<-mingoal<-absgoaldif<-NULL
-    
-    
     if(is.null(Tier))
         
         bind_rows(df %>%

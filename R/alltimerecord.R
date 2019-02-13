@@ -15,11 +15,6 @@
 #' 
 #' @export
 alltimerecord <- function(df = NULL, teamname = NULL) {
-    ## Assign to NULL
-    . <- home <- visitor <- hgoal <- vgoal <- goaldif <- FT <- GF  <- NULL
-    GA <- GD <- P <- W <- D <- L <- Season <- division
-    result <- maxgoal <- mingoal <- absgoaldif <- NULL
-    
     hrec <- df %>%
         filter(home == teamname) %>%
         mutate(result = ifelse(hgoal > vgoal, "H", ifelse(hgoal < vgoal, "A", "D"))) %>%

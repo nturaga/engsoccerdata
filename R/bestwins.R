@@ -17,10 +17,6 @@
 #' @export
 bestwins<-function(df=NULL, teamname=NULL, type=NULL, N=NULL){
 
-    home <- visitor <- hgoal <- vgoal <- goaldif <- FT <- Season <- NULL
-
-    division <- result <- maxgoal <- mingoal <- absgoaldif <- NULL
-
     N <- ifelse(is.null(N), 10, N)
 
     if(is.null(type)) {
