@@ -1,9 +1,9 @@
 Title: English and European Soccer Results 1871-2018
 Type: Package
-Package: SoccerData
+Package: engoccerData
 Version: 0.1.7
 Date: 2017-01-22
-Author: James Curley, Nitesh Turaga
+Author: James Curley
 Maintainer: James Curley <jc3181@columbia.edu>
 Description: Analyzing English & European soccer results data from 1871-2016.
 Depends: R (>= 3.5)
